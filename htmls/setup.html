@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wifi Setup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="css">
+</head>
+<body>
+  <h1>Wifi Setup</h1>
+  <p>
+   <table class="state">
+   <tr><td>New SSID</td><td><input id="ssid" type="edit" value=""/></td></tr>
+   <tr><td>New Password</td><td><input id="password" type="edit" value=""/></td></tr>
+   <tr><td></td><td><input id="Set" type="button" value="set" onclick="doSet();" /></td></tr>
+   </table>
+  </p>
+</body>
+<script>
+  function doSet() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "/wifiset?ssid="+ssid.value+"&pass="+password.value, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+</script>
+</html>

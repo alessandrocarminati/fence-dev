@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Device Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="css">
+</head>
+<body>
+  <h1>Device Control</h1>
+  <p>
+   <input id="PwButtonShort" type="button" value="short" onclick="doPwButtonShort();" />
+   <input id="PwButtonLong" type="button" value="long" onclick="doPwButtonLong();" />
+  </p>
+  <p>
+    <table class="state">
+    <tr><td><span class="x-labels">State:</span> </td>
+    <td><span id="State">%state%</span></td></tr>
+    </table>
+  </p>
+  <p>
+    <table class="state">
+    <tr>
+    <td><a href="/wsconsole">Console</a></td>
+    <td><a href="/setup">WiFi Settings</a></td>
+    <td><a href="/dummy">Dummy</a></td>
+    </tr>
+    </table>
+  </p>
+</body>
+<script>
+  function doPwButtonShort() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "/setstate?0=pulse", false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+  function doPwButtonLong() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "/setstate?0=force", false );
+    xmlHttp.send( null );
+    update_state();
+    return xmlHttp.responseText;
+}
+  function update_state() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("State").innerHTML = "<img src=\""+this.responseText+".gif\" alt=\""+this.responseText+"\">";
+      }
+    };
+    xhttp.open("GET", "/getstate", true);
+    xhttp.send();
+  }
+  setInterval(update_state, 10000 ) ;
+  update_state();
+</script>
+</html>

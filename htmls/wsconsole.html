@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>WS console</title>
+  </head>
+  <body>
+    <h1>WS Console</h1>
+    <textarea name="telnet_win" id="telnet_win" rows="25" cols="80"></textarea><br>
+    <input type="text" id="command" name="command" onkeydown="sendText(this)">
+    <script>
+
+var host = window.location.host; 
+var url= 'ws://'+host+':14551';
+const telnet = new WebSocket(url);
+
+telnet.onopen = function(event) {
+  const textarea = document.getElementById('telnet_win');
+  textarea.value += 'Connected to Telnet server';
+};
+
+telnet.onmessage = function(event) {
+  const textarea = document.getElementById('telnet_win');
+  textarea.scrollTop = textarea.scrollHeight;
+  if (event.data !="Connected"){
+     textarea.value += atob(event.data);
+     }
+};
+
+telnet.onclose = function(event) {
+  const textarea = document.getElementById('telnet_win');
+  textarea.value += 'Disconnected from Telnet server';
+};
+
+function sendCommand(command) {
+  telnet.send(command);
+}
+function sendText(command) { 
+  if (event.key === 'Enter') {
+    telnet.send(command.value);
+    command.value = "";
+    }
+}
+    </script>
+  </body>
+</html>
