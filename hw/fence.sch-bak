@@ -1,4 +1,212 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+EELAYER 30 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Conn_01x08_Female J2
+U 1 1 63AC2CCE
+P 1100 7450
+F 0 "J2" V 1173 7380 50  0000 C CNN
+F 1 "Conn_01x08_Female" V 1264 7380 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 1100 7450 50  0001 C CNN
+F 3 "~" H 1100 7450 50  0001 C CNN
+	1    1100 7450
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Conn_01x08_Female J4
+U 1 1 63AC3B9D
+P 2000 7450
+F 0 "J4" V 2073 7380 50  0000 C CNN
+F 1 "Conn_01x08_Female" V 2164 7380 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 2000 7450 50  0001 C CNN
+F 3 "~" H 2000 7450 50  0001 C CNN
+	1    2000 7450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_US R1
+U 1 1 63AC7796
+P 1000 5750
+F 0 "R1" H 1068 5796 50  0000 L CNN
+F 1 "R_US" H 1068 5705 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 1040 5740 50  0001 C CNN
+F 3 "~" H 1000 5750 50  0001 C CNN
+	1    1000 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R2
+U 1 1 63AC8D95
+P 1500 5750
+F 0 "R2" H 1568 5796 50  0000 L CNN
+F 1 "R_US" H 1568 5705 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 1540 5740 50  0001 C CNN
+F 3 "~" H 1500 5750 50  0001 C CNN
+	1    1500 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:4N25 U1
+U 1 1 63AC934A
+P 1350 4250
+F 0 "U1" H 1350 4575 50  0000 C CNN
+F 1 "4N25" H 1350 4484 50  0000 C CNN
+F 2 "Package_DIP:DIP-6_W7.62mm" H 1150 4050 50  0001 L CIN
+F 3 "https://www.vishay.com/docs/83725/4n25.pdf" H 1350 4250 50  0001 L CNN
+	1    1350 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:4N25 U2
+U 1 1 63AC989B
+P 2300 4250
+F 0 "U2" H 2300 4575 50  0000 C CNN
+F 1 "4N25" H 2300 4484 50  0000 C CNN
+F 2 "Package_DIP:DIP-6_W7.62mm" H 2100 4050 50  0001 L CIN
+F 3 "https://www.vishay.com/docs/83725/4n25.pdf" H 2300 4250 50  0001 L CNN
+	1    2300 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J1
+U 1 1 63ACAA2A
+P 950 3000
+F 0 "J1" H 1058 3181 50  0000 C CNN
+F 1 "Conn_01x02_Male" H 1058 3090 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 950 3000 50  0001 C CNN
+F 3 "~" H 950 3000 50  0001 C CNN
+	1    950  3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J3
+U 1 1 63ACB64E
+P 1550 3050
+F 0 "J3" H 1658 3231 50  0000 C CNN
+F 1 "Conn_01x02_Male" H 1658 3140 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 1550 3050 50  0001 C CNN
+F 3 "~" H 1550 3050 50  0001 C CNN
+	1    1550 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x04_Male J5
+U 1 1 63ACC465
+P 2500 3150
+F 0 "J5" H 2608 3431 50  0000 C CNN
+F 1 "Conn_01x04_Male" H 2608 3340 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 2500 3150 50  0001 C CNN
+F 3 "~" H 2500 3150 50  0001 C CNN
+	1    2500 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 7250 1400 5900
+Wire Wire Line
+	1400 3350 2700 3350
+Wire Wire Line
+	1500 5900 1400 5900
+Connection ~ 1400 5900
+Wire Wire Line
+	1400 5900 1400 3350
+Wire Wire Line
+	1900 7250 1900 5600
+Wire Wire Line
+	1900 5600 1500 5600
+Wire Wire Line
+	2200 5100 2750 5100
+Wire Wire Line
+	2750 5100 2750 4350
+Wire Wire Line
+	2750 4350 2600 4350
+Wire Wire Line
+	2200 5100 2200 7250
+Wire Wire Line
+	2200 5100 900  5100
+Wire Wire Line
+	900  5100 900  4350
+Wire Wire Line
+	900  4350 1050 4350
+Connection ~ 2200 5100
+Wire Wire Line
+	1000 5600 1000 5250
+Wire Wire Line
+	1000 5250 850  5250
+Wire Wire Line
+	850  5250 850  4150
+Wire Wire Line
+	850  4150 1050 4150
+Wire Wire Line
+	1200 7250 1200 6550
+Wire Wire Line
+	1200 6550 3800 6550
+Wire Wire Line
+	3800 6550 3800 3250
+Wire Wire Line
+	3800 3250 2700 3250
+Wire Wire Line
+	1100 7250 1100 6300
+Wire Wire Line
+	1100 6300 3950 6300
+Wire Wire Line
+	3950 6300 3950 3150
+Wire Wire Line
+	3950 3150 2700 3150
+Wire Wire Line
+	2750 4350 3200 4350
+Wire Wire Line
+	3200 4350 3200 3050
+Wire Wire Line
+	3200 3050 2700 3050
+Connection ~ 2750 4350
+Wire Wire Line
+	1650 4250 1750 4250
+Wire Wire Line
+	1750 4250 1750 3650
+Wire Wire Line
+	1750 3650 1350 3650
+Wire Wire Line
+	1350 3650 1350 3000
+Wire Wire Line
+	1350 3000 1150 3000
+Wire Wire Line
+	1650 4350 1800 4350
+Wire Wire Line
+	1800 4350 1800 3550
+Wire Wire Line
+	1800 3550 1250 3550
+Wire Wire Line
+	1250 3550 1250 3100
+Wire Wire Line
+	1250 3100 1150 3100
+Wire Wire Line
+	1750 3150 1850 3150
+Wire Wire Line
+	1850 3150 1850 4150
+Wire Wire Line
+	1850 4150 2000 4150
+Wire Wire Line
+	1750 3050 1900 3050
+Wire Wire Line
+	1900 3050 1900 4350
+Wire Wire Line
+	1900 4350 2000 4350
+Wire Wire Line
+	1000 5900 1000 6800
+Wire Wire Line
+	1000 6800 2000 6800
+Wire Wire Line
+	2000 6800 2000 7250
 $EndSCHEMATC
