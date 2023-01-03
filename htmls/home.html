@@ -9,8 +9,8 @@
 <body>
   <h1>Device Control</h1>
   <p>
-   <input id="PwButtonShort" type="button" value="short" onclick="doPwButtonShort();" />
-   <input id="PwButtonLong" type="button" value="long" onclick="doPwButtonLong();" />
+   <input id="PwButtonShort" type="button" value="ON / OFF" onclick="doPwButtonShort();" />
+   <input id="PwButtonLong" type="button" value="Force OFF" onclick="doPwButtonLong();" hidden="true"/>
   </p>
   <p>
     <table class="state">
@@ -23,7 +23,7 @@
     <tr>
     <td><a href="/wsconsole">Console</a></td>
     <td><a href="/setup">WiFi Settings</a></td>
-    <td><a href="/dummy">Dummy</a></td>
+    <td><a href="/dummy">Serial Settings</a></td>
     </tr>
     </table>
   </p>
@@ -33,6 +33,7 @@
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", "/setstate?0=pulse", false );
     xmlHttp.send( null );
+    update_state();
     return xmlHttp.responseText;
 }
   function doPwButtonLong() {
@@ -47,6 +48,7 @@
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("State").innerHTML = "<img src=\""+this.responseText+".gif\" alt=\""+this.responseText+"\">";
+	document.getElementById("PwButtonLong").hidden = this.responseText=="on"?false:true;
       }
     };
     xhttp.open("GET", "/getstate", true);
