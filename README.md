@@ -22,6 +22,10 @@ Front view
 
 ![image info](./imgs/front.jpg)
 
+Back view
+
+![image info](./imgs/back.jpg)
+
 The `hw` directory contains the hardware board design file written using kicad.
 
 # Software

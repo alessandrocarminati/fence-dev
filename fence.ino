@@ -9,7 +9,6 @@
 #include "base64_utils.h"
 
 #define DEBUG_ESP_WIFI
-#define DHTTYPE DHT11   // DHT 11
 #define SHORT_PULSE 500
 #define LONG_PULSE 5000
 #define LEN_BUF 1024
@@ -20,7 +19,8 @@
 #define HTTP_PORT 80
 #define SW_TTY_TX 12
 #define SW_TTY_RX 13
-
+#define ATX_PWR_BTN 5
+#define ATX_PWR_LED 4
 #define UP HIGH
 #define DW LOW
 
@@ -40,8 +40,6 @@ WiFiServer serverTCP( TCP_PORT );
 WebSocketsServer webSocket = WebSocketsServer(WS_PORT);
 SoftwareSerial sw_tty;
 
-const int readpin = 4;
-const int writepin= 5;
 int mtempi=0;
 int TIME=30000;
 float mtemp[8];
@@ -65,8 +63,8 @@ void setup() {
 	Serial.begin(SERIAL_BAUDRATE);
 	sw_tty.begin(SW_SERIAL_BAUDRATE, SWSERIAL_8N1, SW_TTY_RX, SW_TTY_TX, false);
 	delay(10);
-	pinMode(writepin,OUTPUT);
-	pinMode(readpin,INPUT);
+	pinMode(ATX_PWR_BTN,OUTPUT);
+	pinMode(ATX_PWR_LED,INPUT);
 	EEPROM.begin(512);
 	if (EEPROM.read(511)==0xaa) {
 		Serial.println("eeprom wifi conf exists!");
@@ -231,15 +229,15 @@ void button(){
 	s="not supported!\n";
 	if (stat=="pulse") {//
 		s="sent pulse";
-		digitalWrite(writepin, UP);
+		digitalWrite(ATX_PWR_BTN, UP);
 		delay(SHORT_PULSE);
-		digitalWrite(writepin, DW);
+		digitalWrite(ATX_PWR_BTN, DW);
 		}
 	if (stat=="force") {
 		s="sent force";
-		digitalWrite(writepin, UP);
+		digitalWrite(ATX_PWR_BTN, UP);
 		delay(LONG_PULSE);
-		digitalWrite(writepin, DW);
+		digitalWrite(ATX_PWR_BTN, DW);
 		}
 	server.send(200, "text/plain",s);
 }
@@ -250,7 +248,7 @@ void getstate(){
 	String s;
 	int val;
 
-	val = digitalRead(readpin);
+	val = digitalRead(ATX_PWR_LED);
 	if (val==1) s="off"; 
 		else s="on";
 	server.send(200, "text/plain",s);
